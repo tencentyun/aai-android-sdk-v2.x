@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout android:id="@+id/l1"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true">
+
+        <TextView android:id="@+id/tv_appid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:gravity="right"
+            android:text="@string/appid"/>
+        <EditText android:id="@+id/appid"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/must_input"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <LinearLayout android:id="@+id/l2"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true">
+
+        <TextView android:id="@+id/tv_project_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:gravity="right"
+            android:text="@string/project_id"/>
+        <EditText android:id="@+id/project_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/can_input"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <LinearLayout android:id="@+id/l3"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true">
+
+        <TextView android:id="@+id/tv_secret_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:gravity="right"
+            android:text="@string/secret_id"/>
+        <EditText android:id="@+id/secret_id"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/must_input"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <LinearLayout android:id="@+id/l4"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentTop="true">
+
+        <TextView android:id="@+id/tv_secret_key"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:gravity="right"
+            android:text="@string/secret_key"/>
+        <EditText android:id="@+id/secret_key"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="@string/must_input"
+            android:layout_weight="1" />
+
+    </LinearLayout>
+
+    <Button android:id="@+id/start"
+        android:layout_marginTop="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="@string/start"/>
+
+    <Button android:id="@+id/read_config"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:text="@string/read_config"/>
+</LinearLayout>
