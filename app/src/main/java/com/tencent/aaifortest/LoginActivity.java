@@ -127,7 +127,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void readConfig() {
 
-        String configPath = Environment.getExternalStorageDirectory().toString() + "/tencent/aai_config";
+        String configPath = Environment.getExternalStorageDirectory().toString() + "/aai_config";
         File parentDir = new File(configPath);
         if (!parentDir.exists()) {
             parentDir.mkdirs();
@@ -178,7 +178,7 @@ public class LoginActivity extends AppCompatActivity {
             Toast.makeText(this, getString(R.string.read_config_success), Toast.LENGTH_LONG).show();
 
         } else {
-            Toast.makeText(this, getString(R.string.config_not_exist), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, configFile.getAbsolutePath()+" not exist", Toast.LENGTH_LONG).show();
         }
     }
 

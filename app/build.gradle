@@ -23,9 +23,7 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.4.0'
-    compile files('libs/okhttp-3.2.0.jar')
-    compile files('libs/slf4j-android-1.6.1-RC1.jar')
-    compile files('libs/okio-1.6.0.jar')
-    compile files('libs/vad.jar')
-    compile files('libs/aai-2.1.1.jar')
+    compile 'com.tencent.aai:aai:2.1.2:@aar'
+    compile 'com.squareup.okhttp3:okhttp:3.6.0'
+    compile 'org.slf4j:slf4j-android:1.6.1-RC1'
 }
