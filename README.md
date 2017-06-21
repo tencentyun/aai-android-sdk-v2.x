@@ -19,8 +19,6 @@ compile 'org.slf4j:slf4j-android:1.6.1-RC1'
 
 ### 二、Demo使用方法
 
-#### 注意
-
 ```diff
 - 删除sdk-resource目录
 ```
