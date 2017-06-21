@@ -19,7 +19,7 @@ compile 'org.slf4j:slf4j-android:1.6.1-RC1'
 
 ### 二、Demo使用方法
 
-- 直接使用android studio导入项目后即可使用，如果您选用在build.gradle下添加远程依赖来进行构建，**请删除sdk-resource目录**，该目录仅仅是保存了您本地构建需要的库文件，和demo工程没有直接的依赖关系。
+- 直接使用android studio导入项目后即可使用，如果您选用在build.gradle下添加远程依赖来进行构建，<font color="red">请删除sdk-resource目录</font>，该目录仅仅是保存了您本地构建需要的库文件，和demo工程没有直接的依赖关系。
 
 -  登录页面时需要的配置信息，您可以直接在app上填写，也可以修改assets目录下的config.json文件的配置，然后点击读取配置即可。**这仅仅用于测试，正式环境下不可暴露自己的secretKey。**
 
