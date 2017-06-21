@@ -9,21 +9,23 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.tencent.aai.log.AAILogger;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -127,69 +129,43 @@ public class LoginActivity extends AppCompatActivity {
 
     private void readConfig() {
 
-        String configPath = Environment.getExternalStorageDirectory().toString() + "/aai_config";
-        File parentDir = new File(configPath);
-        if (!parentDir.exists()) {
-            parentDir.mkdirs();
-        }
-        String configName = "config.txt";
-
-        File configFile = new File(configPath, configName);
-        FileInputStream fileInputStream;
-        BufferedReader bufferedReader;
-        Map<String, String> config = new HashMap<>();
-        if (configFile.exists()) {
-
+        InputStream inputStream = null;
+        BufferedReader bufferedReader = null;
+        try {
+            inputStream = getAssets().open("config.json");
+            bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+            StringBuilder config = new StringBuilder();
+            String line = null;
+            while ((line = bufferedReader.readLine()) != null) {
+                config.append(line);
+            }
+            JSONObject jsonObject = new JSONObject(config.toString());
+            appid.setText(jsonObject.getString(CommonConst.appid));
+            projectId.setText(jsonObject.getString(CommonConst.projectId));
+            secretId.setText(jsonObject.getString(CommonConst.secretId));
+            secretKey.setText(jsonObject.getString(CommonConst.secretKey));
+            Toast.makeText(this, getString(R.string.read_config_success), Toast.LENGTH_LONG).show();
+        } catch (IOException e) {
+            Toast.makeText(this, getString(R.string.read_config_failed), Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+        } catch (JSONException e) {
+            Toast.makeText(this, getString(R.string.read_config_failed), Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+        } finally {
             try {
-                fileInputStream = new FileInputStream(configFile);
-                bufferedReader = new BufferedReader(new InputStreamReader(fileInputStream));
-                String line;
-                while ((line = bufferedReader.readLine()) != null) {
-                    if (!TextUtils.isEmpty(line)) {
-                        int lastIndex = line.lastIndexOf("//");
-                        String value;
-                        if (lastIndex != -1) {
-                            value = line.substring(0, lastIndex);
-                        } else {
-                            value = line;
-                        }
-                        if (!TextUtils.isEmpty(value)) {
-                            value = value.replace(" ", "");
-                            String[] pair = value.split("=");
-                            if (pair.length >= 2) {
-                                String key = pair[0];
-                                String val = pair[1];
-                                config.put(key, val);
-                                //AAILogger.info(logger, "key={}, value={}",key, val);
-                            }
-                        }
-                    }
-                }
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
+
+               if (bufferedReader != null) {
+                   bufferedReader.close();
+               }
+
+               if (inputStream != null) {
+                   inputStream.close();
+               }
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            appid.setText(getStringConfig(CommonConst.appid, config, appid.getText().toString()));
-            projectId.setText(getStringConfig(CommonConst.projectId, config, projectId.getText().toString()));
-            secretId.setText(getStringConfig(CommonConst.secretId, config, secretId.getText().toString()));
-            secretKey.setText(getStringConfig(CommonConst.secretKey, config, secretKey.getText().toString()));
-
-            Toast.makeText(this, getString(R.string.read_config_success), Toast.LENGTH_LONG).show();
-
-        } else {
-            Toast.makeText(this, configFile.getAbsolutePath()+" not exist", Toast.LENGTH_LONG).show();
         }
-    }
 
-    private String getStringConfig(String key, Map<String, String> config, String defaultValue) {
-
-        String keyString = config.get(key);
-        String keyValue = defaultValue;
-        if (!TextUtils.isEmpty(keyString)) {
-            keyValue = keyString;
-        }
-        return keyValue;
     }
 
 }

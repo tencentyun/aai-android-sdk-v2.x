@@ -36,6 +36,7 @@ import com.tencent.aai.model.type.AudioRecognizeTemplate;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.File;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -71,9 +72,12 @@ public class MainActivity extends AppCompatActivity {
 
     private final String PERFORMANCE_TAG = "PerformanceTag";
 
+
     private void checkPermissions() {
 
         List<String> permissions = new LinkedList<>();
+
+
 
         addPermission(permissions, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         addPermission(permissions, Manifest.permission.RECORD_AUDIO);

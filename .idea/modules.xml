@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AaiForTest.iml" filepath="$PROJECT_DIR$/AaiForTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/aai-android-sdk-v2.x.iml" filepath="$PROJECT_DIR$/aai-android-sdk-v2.x.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

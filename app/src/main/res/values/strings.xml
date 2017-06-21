@@ -21,6 +21,7 @@
     <string name="cant_stop">识别状态：不存在该任务，无法停止</string>
     <string name="cant_cancel">识别状态：不存在该任务，无法取消</string>
     <string name="read_config_success">读取配置文件成功</string>
+    <string name="read_config_failed">读取配置文件失败</string>
     <string name="config_not_exist">配置文件不存在</string>
     <string name="must_input">必填</string>
     <string name="can_input">选填</string>
